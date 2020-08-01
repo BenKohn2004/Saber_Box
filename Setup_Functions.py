@@ -2494,6 +2494,9 @@ if train_model == True:
   	# load image info
   	info = train_set.image_info[image_id]
 
+	
+os.chdir('/content/Saber_Box/Mask_RCNN/')
+
 from mrcnn.visualize import display_instances
 from mrcnn.utils import extract_bboxes
 from mrcnn.config import Config
