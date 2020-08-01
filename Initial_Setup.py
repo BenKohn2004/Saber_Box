@@ -39,12 +39,13 @@ duplicate_threshold_factor = 0.75
 camera_motion_threshold_factor = 8
 
 # Mask_RCNN include setup.py
-!git clone https://github.com/matterport/Mask_RCNN.git
+# !git clone https://github.com/matterport/Mask_RCNN.git
+subprocess.call('git clone https://github.com/matterport/Mask_RCNN.git', shell = True)
 os.chdir('/content/Mask_RCNN/')
 !python setup.py install
 
-from os import listdir
-from os.path import exists, join, basename, splitext
+from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
+import pandas as pd
 from xml.etree import ElementTree
 from PIL import Image
 from mrcnn.utils import Dataset
@@ -77,10 +78,6 @@ from mrcnn.utils import compute_ap
 from mrcnn.model import load_image_gt
 from mrcnn.model import mold_image
 import matplotlib.pyplot as pyplot
-
-if not exists('keypoint.py'):
-  !wget https://raw.githubusercontent.com/facebookresearch/maskrcnn-benchmark/e0a525a0139baf7086117b7ed3fd318a4878d71c/maskrcnn_benchmark/structures/keypoint.py
-from keypoint import PersonKeypoints
 
 #For Human Pose Analysis
 plt.rcParams["axes.grid"] = False
