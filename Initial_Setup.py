@@ -42,7 +42,7 @@ camera_motion_threshold_factor = 8
 # !git clone https://github.com/matterport/Mask_RCNN.git
 subprocess.call('git clone https://github.com/matterport/Mask_RCNN.git', shell = True)
 os.chdir('/content/Mask_RCNN/')
-setup.py install
+setup.py
 
 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
 import pandas as pd
