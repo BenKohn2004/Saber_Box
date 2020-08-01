@@ -33,6 +33,15 @@ from mrcnn.model import load_image_gt
 from mrcnn.model import mold_image
 import matplotlib.pyplot as pyplot
 
+from mrcnn.visualize import display_instances
+from mrcnn.utils import extract_bboxes
+from mrcnn.config import Config
+from mrcnn.model import MaskRCNN
+from mrcnn.utils import Dataset
+import imgaug  # https://github.com/aleju/imgaug (pip3 install imageaug)
+
+
+
 #For Human Pose Analysis
 plt.rcParams["axes.grid"] = False
 model = torchvision.models.detection.keypointrcnn_resnet50_fpn(pretrained=True)
@@ -2494,15 +2503,12 @@ if train_model == True:
   	# load image info
   	info = train_set.image_info[image_id]
 
-	
-os.chdir('/content/Saber_Box/Mask_RCNN/rcnn')
-
-from mrcnn.visualize import display_instances
-from mrcnn.utils import extract_bboxes
-from mrcnn.config import Config
-from mrcnn.model import MaskRCNN
-from mrcnn.utils import Dataset
-import imgaug  # https://github.com/aleju/imgaug (pip3 install imageaug)
+# from mrcnn.visualize import display_instances
+# from mrcnn.utils import extract_bboxes
+# from mrcnn.config import Config
+# from mrcnn.model import MaskRCNN
+# from mrcnn.utils import Dataset
+# import imgaug  # https://github.com/aleju/imgaug (pip3 install imageaug)
 
 if train_model == True:
   # define image id
