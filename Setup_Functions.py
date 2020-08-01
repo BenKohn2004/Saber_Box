@@ -1,3 +1,5 @@
+train_model = False
+
 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
 import pandas as pd
 from xml.etree import ElementTree
