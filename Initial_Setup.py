@@ -1,13 +1,3 @@
-from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
-import pandas as pd
-import os
-from google.colab import drive
-from google.colab import files
-drive.mount('/content/drive', force_remount=True)
-COLAB = True
-# %tensorflow_version 1.x 
-print("Note: using Google CoLab")
-
 # Establishes Initial Parameters
 # For creating  a new .h5 detection model
 train_model = False
