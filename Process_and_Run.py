@@ -52,7 +52,10 @@ engarde_position_buffer = 15
 max_length = 103
 clip_vector_length = max_length - engarde_position_buffer
 
-save_path = '/content/drive/My Drive/projects/fencing/Fencing Clips/'
+if simplified == True:
+  save_path = '/content/drive/My Drive/'
+else:
+  save_path = '/content/drive/My Drive/projects/fencing/Fencing Clips/'
 model = load_model(os.path.join(save_path, 'ROW_model.h5'))
 
 display(touch_folders[clip_call])
