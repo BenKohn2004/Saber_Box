@@ -1,10 +1,11 @@
 from cv2 import VideoWriter, VideoWriter_fourcc, imread, resize
 import pandas as pd
+import os
 from google.colab import drive
 from google.colab import files
 drive.mount('/content/drive', force_remount=True)
 COLAB = True
-%tensorflow_version 1.x 
+# %tensorflow_version 1.x 
 print("Note: using Google CoLab")
 
 # Establishes Initial Parameters
@@ -49,10 +50,9 @@ camera_motion_threshold_factor = 8
 
 # Mask_RCNN include setup.py
 !git clone https://github.com/matterport/Mask_RCNN.git
-%cd Mask_RCNN
+os.chdir('/content/Mask_RCNN/')
 !python setup.py install
 
-import os
 from os import listdir
 from os.path import exists, join, basename, splitext
 from xml.etree import ElementTree
@@ -2105,12 +2105,11 @@ def mask_image(frame, width, height, masking_box):
 
   return (frame)
 
-# Commented out IPython magic to ensure Python compatibility.
 def create_representative_image(clip_vector, capture_width, capture_height):
   # Allows for an overlay that represents the bellguard horizontal motion and box lights
 
   #Creates a Folder to save the images and removes previous version
-  %cd /content/Mask_RCNN/videos/ 
+  os.chdir('/content/Mask_RCNN/videos')
   !mkdir save_white_dot
   !rm -r /content/Mask_RCNN/videos/save_white_dot
   !mkdir save_white_dot
@@ -2142,12 +2141,11 @@ def create_representative_image(clip_vector, capture_width, capture_height):
 
   return
 
-# Commented out IPython magic to ensure Python compatibility.
 def create_overlay_image(frame_count):
   # Allows for an overlay that represents the bellguard horizontal motion and box lights
 
   #Creates a Folder to save the images and removes previous version
-  %cd /content/Mask_RCNN/videos/
+  os.chdir('/content/Mask_RCNN/videos/')
   !rm -r /content/Mask_RCNN/videos/overlay
   !mkdir overlay
 
@@ -2264,7 +2262,6 @@ def clip_vector_generator(Left_Position, Right_Position, left_light_comparison, 
 
   return (clip_vector)
 
-# Commented out IPython magic to ensure Python compatibility.
 def clip_vector_np_save(clip_call, file_number, clip_vector):
   # Saves the clip vector for future use
   # Clip_Call Left_Touch, Right_Touch, Simul
@@ -2301,7 +2298,8 @@ def clip_vector_np_save(clip_call, file_number, clip_vector):
     display(name)
 
   # Changes the directory to the sub folder of the fenncing clip
-  %cd $name
+  # %cd $name
+  os.chdir(name)
 
   clip_vector_np_name = 'clip_vector_np' + str(file_number) + '.csv'
   # Saves to the current directory
@@ -2314,7 +2312,8 @@ def clip_vector_np_save(clip_call, file_number, clip_vector):
   name = os.path.join(name, name_2)
 
   # Changes the directory to the sub folder for the speed fencing clip
-  %cd $name
+  # %cd $name
+  os.chdir(name)
 
   clip_vector_speed_np_name = 'clip_vector_speed_np' + str(file_number) + '.csv'
   # Saves to the current directory
@@ -2327,7 +2326,8 @@ def clip_vector_np_save(clip_call, file_number, clip_vector):
   name = os.path.join(name, name_2)
 
   # Changes the directory to the sub folder for the acceleration fencning clip
-  %cd $name
+  # %cd $name
+  os.chdir(name)
 
   clip_vector_acceleration_np_name = 'clip_vector_acceleration_np' + str(file_number) + '.csv'
   #Saves to the current directory
@@ -2402,18 +2402,21 @@ def position_down_scale(Position1, Position2, capture_width, capture_height):
 
   return (Position1, Position2)
 
-# Commented out IPython magic to ensure Python compatibility.
 if train_model == True:
   # Transfers the Bell_Guard set from Google Drive, specifically images and annotations
-  %cd /content/drive/My Drive/projects/fencing/Bell_Guard
+  # %cd /content/drive/My Drive/projects/fencing/Bell_Guard
+  os.chdir('/content/drive/My Drive/projects/fencing/Bell_Guard')
   !cp -r /content/drive/My\ Drive/projects/fencing/Bell_Guard/ /content/Mask_RCNN/
 
   #Finds the number of images used in training and testing
-  %cd /content/drive/My Drive/projects/fencing/Bell_Guard/images
+  # %cd /content/drive/My Drive/projects/fencing/Bell_Guard/images
+  os.chdir('/content/drive/My Drive/projects/fencing/Bell_Guard/images')
+
   number_of_images = len(os.listdir())
   train_set_number = int(0.8*number_of_images)
 
-  %cd /content/Mask_RCNN/
+  # %cd /content/Mask_RCNN/
+  os.chdir('/content/Mask_RCNN/')
 
 class Bell_GuardDataset(Dataset):
   #class that defines and loads the Bell_Guard dataset
@@ -2735,12 +2738,12 @@ class InferenceConfig(Config):
   NUM_CLASSES = 4
   KEYPOINT_MASK_POOL_SIZE = 7
 
-# Commented out IPython magic to ensure Python compatibility.
 def save_clip_progress(bbox, frame_count, capture_width, capture_height, clip_vector_previous):
 
   # Counts the files in the directory '/content/Mask_RCNN/videos/save/'
 
-  %cd /content/Mask_RCNN/videos/save/
+  # %cd /content/Mask_RCNN/videos/save/
+  os.chdir('/content/Mask_RCNN/videos/save/')
   number_of_stored_frames = len(os.listdir())
   display(f'The number of stored frames in the save folder is {number_of_stored_frames}.')
 
@@ -3046,7 +3049,6 @@ def frame_comparison(frame_number, frame, width, height, frame_count, engarde_le
 
   return(average_image_diff, h_average)
 
-# Commented out IPython magic to ensure Python compatibility.
 def test_and_remove_duplicate_frames(file_name, touch_folder, ROOT_DIR, engarde_length):
   # Creates a List of unique frames with by comparing the previous and current frames
   # This compensates for video compression that may give duplicate frames when FPS is changed
@@ -3153,7 +3155,8 @@ def test_and_remove_duplicate_frames(file_name, touch_folder, ROOT_DIR, engarde_
 
   # Saves the new video file over the original
   # Directory of images to run detection on
-  %cd /content/Mask_RCNN/
+  # %cd /content/Mask_RCNN/
+  os.chdir('/content/Mask_RCNN/')
   ROOT_DIR = os.getcwd()
   VIDEO_DIR = os.path.join(ROOT_DIR, "videos")
   VIDEO_SAVE_DIR = os.path.join(VIDEO_DIR, "original_without_repeats")
@@ -3182,7 +3185,8 @@ def process_video_clip(file_name, touch_folder, remove_duplicate_frames):
   left_position_empty = False
   right_position_empty = False
 
-  %cd /content/Mask_RCNN
+  # %cd /content/Mask_RCNN
+  os.chdir('/content/Mask_RCNN/')
   !mkdir videos
   display(f'os.getcwd() is: {os.getcwd()}')
   ROOT_DIR = os.getcwd()
@@ -3201,12 +3205,12 @@ def process_video_clip(file_name, touch_folder, remove_duplicate_frames):
   !rm -r /content/Mask_RCNN/videos/save
   !rm -r /content/Mask_RCNN/videos/original
   !rm -r /content/Mask_RCNN/videos/original_without_repeats
-  %cd /content/Mask_RCNN/videos
+#   %cd /content/Mask_RCNN/videos
   !mkdir save
   !mkdir original
   !mkdir original_without_repeats
 
-  %cd /content/Mask_RCNN
+#   %cd /content/Mask_RCNN
 
   path = r'/content/drive/My\ Drive/projects/fencing/Fencing\ Clips/' + touch_folder + '/' + file_name
   display(f'The path is: {path}')
@@ -3677,12 +3681,12 @@ def load_clip(folder, clip_number, max_length):
 
   return (clip_vector)
 
-
 def create_folder_hierarchy(file_name):
 
   # Creates File Path in Google Drive
   !mkdir -p '/content/drive/My Drive/projects/fencing/Fencing Clips/Left_Touch/Left_Touch_Vector_Clips'
-  %cd '/content/drive/My Drive/projects/fencing/Fencing Clips/Left_Touch/'
+  # %cd '/content/drive/My Drive/projects/fencing/Fencing Clips/Left_Touch/'
+  os.chdir('/content/drive/My Drive/projects/fencing/Fencing Clips/Left_Touch/')
   !mkdir Left_Touch_Vector_Clips_Speed
   !mkdir Left_Touch_Vector_Clips_Acceleration
 
