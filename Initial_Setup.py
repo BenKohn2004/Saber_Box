@@ -37,8 +37,3 @@ knee_conf_min = 3
 duplicate_threshold_factor = 0.75
 # The Threshold for determining camera motion
 camera_motion_threshold_factor = 8
-
-# Mask_RCNN include setup.py
-# !git clone https://github.com/matterport/Mask_RCNN.git
-subprocess.call('git clone https://github.com/matterport/Mask_RCNN.git', shell = True)
-os.chdir('/content/Mask_RCNN/')
