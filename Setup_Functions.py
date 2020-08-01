@@ -28,16 +28,29 @@ from tensorflow.keras.models import load_model
 
 from numpy import expand_dims
 from numpy import mean
-from mrcnn.utils import compute_ap
-from mrcnn.model import load_image_gt
-from mrcnn.model import mold_image
-import matplotlib.pyplot as pyplot
 
-from mrcnn.visualize import display_instances
-from mrcnn.utils import extract_bboxes
-from mrcnn.config import Config
-from mrcnn.model import MaskRCNN
-from mrcnn.utils import Dataset
+import matplotlib.pyplot as pyplot
+try:
+  from mrcnn.utils import compute_ap
+  from mrcnn.model import load_image_gt
+  from mrcnn.model import mold_image
+  from mrcnn.visualize import display_instances
+  from mrcnn.utils import extract_bboxes
+  from mrcnn.config import Config
+  from mrcnn.model import MaskRCNN
+  from mrcnn.utils import Dataset
+except:
+  os.chdir('/content/Saber_Box/Mask_RCNN/')
+  from mrcnn.utils import compute_ap
+  from mrcnn.model import load_image_gt
+  from mrcnn.model import mold_image
+  from mrcnn.visualize import display_instances
+  from mrcnn.utils import extract_bboxes
+  from mrcnn.config import Config
+  from mrcnn.model import MaskRCNN
+  from mrcnn.utils import Dataset 
+  os.chdir('/content/Saber_Box/')
+
 import imgaug  # https://github.com/aleju/imgaug (pip3 install imageaug)
 
 
