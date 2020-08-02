@@ -3662,7 +3662,8 @@ if train_model == True:
  
   # Save_Model
   # Moves mask_rcnn_bell_guard_cfg_0005.h5 to the Mask_RCNN directory
-  file = !find  bell_guard_* -type d
+  # Uncomment to Train Model
+  # file = !find  bell_guard_* -type d
   file = str(file[0])
   file = '/content/Mask_RCNN/' + file + '/mask_rcnn_bell_guard_cfg_0005.h5'
   # !cp {file} /content/Mask_RCNN/
