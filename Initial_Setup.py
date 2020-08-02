@@ -21,19 +21,3 @@ download_videos = True
 analyze_action = True
 # Allows for Simple Usage
 simplified = True
-
-# Parameters:
-min_torso_confidence = 0.80
-bellguard_confidence = 0.65
-# Provides for a higher confidence of bellguard detection
-bellguard_confidence_high = 0.75
-# Allows for a different required confidence for initial detection than tracking
-bellguard_tracking_det_offset = 0.15
-wrist_conf_min = 2
-wrist_conf_high = 6
-wrist_conf_very_high = 9
-knee_conf_min = 3
-# The Threshold for determining duplicate frames
-duplicate_threshold_factor = 0.75
-# The Threshold for determining camera motion
-camera_motion_threshold_factor = 8
