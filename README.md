@@ -10,6 +10,10 @@ The Google Drive requires three files in the top directory:
   3. The Model used for determining Right of way, ROW_model.h5
       https://drive.google.com/file/d/1VIy9JAKNDpFQ1F5wDUBC9-47-i2LZnaF/view?usp=sharing
       
-      
-      
-  
+Open the Jupityr Notebook, Saber_Box in Google Colab. Change: video_filename = 'name.mp4' to the name of your clip.
+
+Go to dropdown menu Runtime > Change Runtime Type and ensure that a GPU or TPU is selected.
+
+Go to dropdown menu Runtime > Run All
+
+Following the Prompt authorize access to your Google Drive and Paste the code into the Box. This will give the notebook access to the required files and creates folders for the fencing clip data.
