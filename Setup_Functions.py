@@ -2786,6 +2786,8 @@ def test_and_remove_duplicate_frames(file_name, touch_folder, ROOT_DIR, engarde_
     name_orig_worpt = '{0}.jpg'.format(frame_count - num_of_deleted_frames)
     name_orig_worpt = os.path.join(VIDEO_ORIGWORPT_DIR, name_orig_worpt)
 
+    verbose = True
+
     if frame_count > 0:
       if verbose == True:
         display(f'Performing Difference Check for Frame {frame_count}')
