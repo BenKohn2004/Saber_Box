@@ -43,7 +43,7 @@ try:
   from mrcnn.model import MaskRCNN
   from mrcnn.utils import Dataset
 except:
-  os.chdir('/content/Saber_Box/Mask_RCNN/')
+  os.chdir('/content/Mask_RCNN/')
   from mrcnn.utils import compute_ap
   from mrcnn.model import load_image_gt
   from mrcnn.model import mold_image
