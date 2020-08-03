@@ -2,7 +2,7 @@
 
 Saber Box is a virtual directing aid. The program is contained within the Google Colab Notebook Saber_Box. It will require you to connect to a Google Drive account. 
 
-The Google Drive requires you to put three files in the top directory:
+You must put three files in the top directory of your Google Drive:
 
   1. The Clip you would like to Analyze
   2. The Model used to detect fencing object, mask_rcnn_bell_guard_cfg_0005.h5 
