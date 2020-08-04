@@ -42,3 +42,4 @@ When using your own clip some tips to keep in mind are:
   4. Try to cut the video to 1 to 3 seconds and have the first 1/2 to 1 second be the fencers coming EnGarde.
   5. After running the model verify using the Overlay_Out video that the colored dots track with the Bellguards. If the dots do not line up then bad data was fed to the model determining Right of Way.
   6. There are various settings on the model. As a default the fencers are assumed to hit once the Bellguards are close enough to each regardless of actual lights. This is due to difficulty tracking the scoring box with some setups.
+  7. The model does not take into account blade contact so all actions will be viewed without regard to beats or parries.
