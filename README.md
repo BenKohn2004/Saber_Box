@@ -10,7 +10,7 @@ You must put three files in the top directory of your Google Drive:
   2. The Model used to detect fencing object, mask_rcnn_bell_guard_cfg_0005.h5 
       https://drive.google.com/file/d/19mDLsh8WuBbPeOedpiXvIPUZqfYKuQXY/view?usp=sharing
   3. The Model used for determining Right of way, ROW_model.h5
-      https://drive.google.com/file/d/1VIy9JAKNDpFQ1F5wDUBC9-47-i2LZnaF/view?usp=sharing
+      https://drive.google.com/file/d/1SCLmuZvzmvtNv4HZFZcxSmPLbnsbn5C8/view?usp=sharing
      
   The links above can be used to download the two models and then place them in the top directory of your Google Drive. A few fencing clips are also available to use as samples. 
 
