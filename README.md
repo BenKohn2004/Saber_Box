@@ -2,7 +2,7 @@
 
 Saber Box is a virtual directing aid. The program is contained within the Google Colab Notebook Virtual_Saber_Box. It will require you to connect to a Google Drive account.
 
-A walkthrough of setting up the Virtual Saber Box can be found at: https://youtu.be/qzMVuNEJ_6w
+A walkthrough on setting up the Virtual Saber Box can be found at: https://youtu.be/qzMVuNEJ_6w
 
 Setting up the Virtual Saber Box requires four things.
 
@@ -10,12 +10,11 @@ Setting up the Virtual Saber Box requires four things.
 2.	The Virtual Saber Box notebook open in Google Colab.
 3.	The Google Drive folder ‘Sync’, synced with a folder on your computer using Google Backup and Sync.
 4.	A webcam that has the ‘Sync’ folder linked as the output location for captured video files.
-5.	The links above can be used to download the two models and then place them in the top directory of your Google Drive. A few fencing clips are also available to use as samples. 
+
 To Use the Model:
 1.	Verify that the Runtime on Google Colab is GPU and then run the Google Colab notebook Virtual Saber Box. Allow access to your Google Drive that has the ‘Sync’ Folder.
 2.	Once the Google Colab Notebook has run until ‘Waiting for a new file...’, then add a video file to the ‘Sync’ folder. This can be done by copying and pasting a video file or generating a new one through a webcam.
 3.	Google Colab should detect the new file and automatically generate a tracked file in the ‘Tracked Files’ folder in the Sync Folder.
-
 
 When using your own clip some tips to keep in mind are:
 1.	Clips work best when centered and free from background clutter, specifically people
