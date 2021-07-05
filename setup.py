@@ -1,7 +1,7 @@
 # Changes directory to the downloaded git
 os.chdir('/content/Saber_Box/Python Definitions/')
 
-python_definition_list = ['Analyze_ScoreBox_Lights.py',
+python_definition_list = ['Analyze_ScoreBox_Lights.py', 
                           'apply_mask.py', 
                           'average_list.py', 
                           'average_list_without_null.py', 
@@ -22,6 +22,7 @@ python_definition_list = ['Analyze_ScoreBox_Lights.py',
                           'create_overlay_image.py',
                           'create_representative_image.py',
                           # 'create_title_card.py',
+                          'create_title_card_compatible.py',
                           'create_tracking_masks.py',
                           'darknet_helper.py',
                           'determine_starting_frame.py',
@@ -85,5 +86,4 @@ python_definition_list = ['Analyze_ScoreBox_Lights.py',
                           ]
 
 for file in python_definition_list:
-  # display(f'Running {file}.')
   execfile(file)
