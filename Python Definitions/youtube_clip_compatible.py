@@ -64,7 +64,7 @@ def youtube_clip(link):
     # !ffmpeg -y -ss $youtube_clip_position -i source_video.mp4 -c:v libx264 -c:a aac -frames:v 100 output_video.mp4
 
     # Python Compatible
-    source_code = '!ffmpeg -y -ss $youtube_clip_position -i source_video.mp4 -c:v libx264 -c:a aac -frames:v 100 output_video.mp4'
+    source_code = 'ffmpeg -y -ss $youtube_clip_position -i source_video.mp4 -c:v libx264 -c:a aac -frames:v 100 output_video.mp4'
     get_ipython().run_line_magic("sx", source_code )
 
     os.rename('output_video.mp4', video_title_clip)
@@ -72,7 +72,12 @@ def youtube_clip(link):
     duration_limit_data = [False, 'None']
   else:
     display(f'Duration is greater than {duration_download_limit}. Downloading a portion of the clip.')
-    !ffmpeg $(youtube-dl -g $link | sed "s/.*/-ss $youtube_clip_position -i &/") -y -to $youtube_end_position -c copy out.mp4
+    #!ffmpeg $(youtube-dl -g $link | sed "s/.*/-ss $youtube_clip_position -i &/") -y -to $youtube_end_position -c copy out.mp4
+
+    # Python Compatible
+    source_code = 'ffmpeg $(youtube-dl -g $link | sed "s/.*/-ss $youtube_clip_position -i &/") -y -to $youtube_end_position -c copy out.mp4'
+    get_ipython().run_line_magic("sx", source_code )
+
     os.rename('out.mp4', video_title_clip)
 
     # [starting_frame, fps, total_frames] = determine_starting_frame(video_title_clip, touch_folder, True)
