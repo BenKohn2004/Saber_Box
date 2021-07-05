@@ -535,7 +535,7 @@ def process_video_clip(file_name, touch_folder, remove_duplicate_frames):
     clip_vector = clip_vector_generator(Left_Position, Right_Position, left_light_comparison, right_light_comparison, clip_vector_previous, width)
 
     if smooth_video_clip == True:
-      #Smoothes the Clip using Savitzky–Golay filter
+      #Smoothes the Clip using Savitzky Golay filter
       clip_vector = smooth_clip_vector(clip_vector, engarde_length + engarde_offset)
 
     if verbose == True:
