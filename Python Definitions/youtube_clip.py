@@ -44,8 +44,6 @@ def youtube_clip(link):
 
   # Downloads the entire file if the video clip is short or a DASH file, i.e. streamed video clip
   if duration < duration_download_limit or container == 'm4a_dash':
-    display(f'Present Working Directory is:')
-    !pwd
     #Downloads and saves the YouTube clip if within the duration limit
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
       ydl.download([link])
