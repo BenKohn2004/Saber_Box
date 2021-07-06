@@ -1,7 +1,8 @@
 # Virtual_Saber_Box
 
 The Saber Box is a virtual directing aid. The program is contained within the Google Colab Notebook Virtual_Saber_Box. Virtual_Saber_Box_Compact is functionally identical with many of the Python scripts stored on Github.
-The Saber Box is designed to determine the Right of Way of a saber action without blade contact. Specifically it is meant to differentiate between, attack, counter-attack and preparation. These actions are the foundation of Saber, while also being some of the most subjective and difficult calls to make. The Saber Box is meant to offer a level of consistency in calling Right of Way actions and allow fencers to better plan and train with a repeatable and objective rule set.
+
+The Saber Box is designed to determine the Right of Way of a saber action without blade contact. Specifically it is meant to differentiate between attack, counter-attack and preparation. These actions are the foundation of Saber, while also being some of the most subjective and difficult calls to make. The Saber Box is meant to offer a level of consistency in calling Right of Way actions and allow fencers to better plan and train with a repeatable and objective rule set.
 
 Using the Saber Box.
 
@@ -40,12 +41,7 @@ To Run a Youtube Clip:
 
 
 
-
-
-
-A walkthrough on setting up the Virtual Saber Box can be found at: https://youtu.be/qzMVuNEJ_6w
-
-
+A walkthrough on setting up the Virtual Saber Box can be found at: https://youtu.be/vGtuFIMhBZw
 
 
 
@@ -59,8 +55,6 @@ When using your own clip some tips to keep in mind are:
 7.	The model does not take into account blade contact so all actions will be viewed without regard to beats, parries or lines.
 8.	Both fencer torsos must be visible at the start of the clip.
 9.	Clips that fail to run will not stop the Google Colab notebook from running but also will not generate a Tracked video file.
-  
-A video showing how to setup and use the Box can be found at: https://youtu.be/vGtuFIMhBZw
   
 Principles of Operation
 
