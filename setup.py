@@ -65,7 +65,7 @@ python_definition_list = ['Analyze_ScoreBox_Lights.py',
                           'run_human_pose.py',
                           'saturation_test.py',
                           # 'save_ffmpeg.py',
-                          'save_ffmpeg_compatible.py',
+                          # 'save_ffmpeg_compatible.py',
                           'scorebox_bbox.py',
                           'scoring_box_lights.py',
                           'setup_clip_directories.py',
@@ -81,7 +81,7 @@ python_definition_list = ['Analyze_ScoreBox_Lights.py',
                           'weight_average_list.py',
                           'weighted_average_array.py',
                           'yolov4_run_image.py',
-                          'youtube_clip_compatible.py'
+                          # 'youtube_clip_compatible.py'
                           # 'youtube_clip.py'
                           ]
 
