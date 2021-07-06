@@ -1,51 +1,83 @@
 # Virtual_Saber_Box
 
-Saber Box is a virtual directing aid. The program is contained within the Google Colab Notebook Virtual_Saber_Box. It will require you to connect to a Google Drive account.
+The Saber Box is a virtual directing aid. The program is contained within the Google Colab Notebook Virtual_Saber_Box. Virtual_Saber_Box_Compact is functionally identical with many of the Python scripts stored on Github.
+The Saber Box is designed to determine the Right of Way of a saber action without blade contact. Specifically it is meant to differentiate between, attack, counter-attack and preparation. These actions are the foundation of Saber, while also being some of the most subjective and difficult calls to make. The Saber Box is meant to offer a level of consistency in calling Right of Way actions and allow fencers to better plan and train with a repeatable and objective rule set.
+
+Using the Saber Box.
+
+The Saber Box can be run in one of three ways.
+1.	Analyzing all files in a Sync folder on your Google Drive.
+2.	Analyzing only the most recent file added to a Sync folder on your Google Drive
+3.	A specific time stamp from a Youtube Clip.
+To Run All the Files in the Sync Folder
+1.	Create a folder in the top directory of your Google Drive titled ‘Sync’
+2.	Place fencing clips in the folder to be analyzed
+a.	Clips that are 1 to 4 seconds in length starting with the engarde position work best.
+3.	Open Google Colab and find the Virtual_Saber_Box on my Github, BenKohn2004
+4.	Ensure, run_entire_sync_folder == True, and the other two option are false.
+5.	Runtime -> Run all
+6.	Follow the prompt in the top cell to link your Google Drive
+7.	The result can be found in the ‘Tracked Clips’ folder in the Sync directory.
+To Run only the Most Recent File
+1.	Create a folder in the top directory of your Google Drive titled ‘Sync’
+2.	Open Google Colab and find the Virtual_Saber_Box on my Github, BenKohn2004
+3.	Ensure, run_most_recent_clip == True, and the other two option are false.
+4.	Runtime -> Run all
+5.	Follow the prompt in the top cell to link your Google Drive
+6.	After the program initially runs you should see ‘Waiting for a new file…’ at the bottom of the last cell.
+7.	Place a file of a fencing clip into the ‘Sync’ folder for the program to recognize. The new file will run automatically.
+8.	This is useful for recording a bout and viewing the results in realtime as shown at: https://youtu.be/qzMVuNEJ_6w
+9.	The result can be found in the ‘Tracked Clips’ folder in the Sync directory.
+
+To Run a Youtube Clip:
+1.	Open Google Colab and find the Virtual_Saber_Box on my Github, BenKohn2004
+2.	Ensure, use_youtube_link == True, and the other two option are false.
+3.	Paste the youtube link with time stamp following ‘youtube_link =’ in the second cell.
+4.	Youtube clips shorter than an hour tend to work better than longer youtube videos.
+5.	Runtime -> Run all
+6.	Follow the prompt in the top cell to link your Google Drive
+7.	The result can be found in the ‘Tracked Clips’ folder in the Sync directory and the downloaded clip can be found in the ‘Sync’ folder.
+
+
+
+
+
 
 A walkthrough on setting up the Virtual Saber Box can be found at: https://youtu.be/qzMVuNEJ_6w
 
-Setting up the Virtual Saber Box requires four things.
 
-1.	A Google Drive account with a Folder named ‘Sync’ in the top directory.
-2.	The Virtual Saber Box notebook open in Google Colab.
-3.	The Google Drive folder ‘Sync’, synced with a folder on your computer using Google Backup and Sync.
-4.	A webcam that has the ‘Sync’ folder linked as the output location for captured video files.
 
-To Use the Model:
-1.	Verify that the Runtime on Google Colab is GPU and then run the Google Colab notebook Virtual Saber Box. Allow access to your Google Drive that has the ‘Sync’ Folder.
-2.	Once the Google Colab Notebook has run until ‘Waiting for a new file...’, then add a video file to the ‘Sync’ folder. This can be done by copying and pasting a video file or generating a new one through a webcam.
-3.	Google Colab should detect the new file and automatically generate a tracked file in the ‘Tracked Files’ folder in the Sync Folder.
+
 
 When using your own clip some tips to keep in mind are:
 1.	Clips work best when centered and free from background clutter, specifically people
-2.	Most of the clips I use are 1280x720 at 30 FPS. Larger sizes work but may require more processing time.
+2.	Most of the clips I use are 1280x720 at 30 FPS.
 3.	Video that has been compressed multiple times may be harder for the Computer Vision to track.
-4.	Try to cut the video to 1 to 3 seconds and have the first 1/2 to 1 second be the fencers coming EnGarde.
-5.	After running the model verify using the Tracked video that the colored dots track with the Bellguards. If the dots do not line up then bad data was fed to the model determining Right of Way.
-6.	There are various settings on the model. As a default the fencers are assumed to hit once the Bellguards are close enough to each regardless of actual lights. This is due to difficulty tracking the scoring box with some setups.
-7.	The model does not take into account blade contact so all actions will be viewed without regard to beats or parries.
+4.	Try to cut the video to 1 to 4 seconds and have the first 1/2 to 1 second be the fencers coming EnGarde.
+5.	After running the model verify using the Tracked video that the colored dots track with the Bellguards. If the dots do not line up, then bad data was fed to the model determining Right of Way.
+6.	There are various settings on the model. These are the Initial Parameters in the third cell.
+7.	The model does not take into account blade contact so all actions will be viewed without regard to beats, parries or lines.
 8.	Both fencer torsos must be visible at the start of the clip.
-9.	Clips that fail to run will not stop the Google Colab notebook from running but will not generate a Tracked video file.
+9.	Clips that fail to run will not stop the Google Colab notebook from running but also will not generate a Tracked video file.
   
-  
+A video showing how to setup and use the Box can be found at: https://youtu.be/vGtuFIMhBZw
   
 Principles of Operation
 
 
 Overall Operation
 
-There are two main models used. One is a detection model based on Mask RCNN and adapted through transfer learning to recognize bellguards, torsos and scoring boxes. The second model is a sequential Long Short Term Memory (LSTM) model to determine Right of Way using the output of the first model. 
-There are two stages to the detection model. The first is the engarde_length phase where initial positions and values are established. This is meant to be a period of little motion so the Mask RCNN model will work at its best. 
+There are two main models used. One is a detection model based on YoloV4 and adapted through transfer learning to recognize bellguards, torsos and scoring boxes. The second model is a sequential Long Short Term Memory (LSTM) model to determine Right of Way using the output of the first model. 
+There are two stages to the detection model. The first is the engarde_length phase where initial positions and values are established. This is meant to be a period of little motion so the Yolo model will work at its best. 
 
-The second stage is focused on tracking. Tracking boxes are calculated for each tracked object and allowable boundaries are established for possible object positions. In practical terms there is a reasonable maximum speed for a bell guard in a fencing action.
+The second stage is focused on tracking. Tracking boxes are calculated for each tracked object and allowable boundaries are established for possible object positions. In practical terms there is a reasonable maximum speed for a bell guard in a fencing action. This is used as a maximum allowed motion of a tracking box from one frame to the next.
 
 Much of the program is focused on determining the bell guard position. The exact mechanism used to determine the bell guard position depends on the confidence associated with each method. In general the hierarchy used to determine bell guard position is roughly:
 
 1.	High Confidence detection within the tracking box
-2.	High Confidence based on Human Pose Approximation
-3.	Position based on detected motion between frames
-4.	Expected position based on previous two frames.
-5.	Linear Approximation based on confident positions
+2.	Position based on detected motion between frames
+3.	Expected position based on previous two frames.
+4.	Linear Approximation based on confident positions
 
 Each frame is analyzed sequentially and a bell guard position is determined. The only exception is the linear approximation between points. The linear approximation can retroactively change the bell guard position if uncertain positions are surrounded by certain positions.
 
@@ -70,18 +102,17 @@ There is some robustness factored into the engarde detections. For example if th
 Position Tracking
 
 Tracking Boxes are created based on the confidence of the previously tracked positions. The tracking box expands to accommodate a larger region if the previous positions were uncertain and shrinks to its smallest size once a confident position is established.
-The torsos and scoring box use almost exclusively the detections from the Mask RCNN model and tracking boxes. The bell guards use a hierarchy of possibilities based on the confidence of various inputs.
-
-Human Pose Approximation is used when there is a high confidence in the wrist position of the human pose model. When the human pose is used the position is slightly forward and above the wrist position. The human pose is also used to determine if the bell guard has move behind the fencer’s knee. If the bell guard position is close to the knee then the knee position is used for the bell guard until the bell guard is again determined to be away from the knee. This is used to prevent a bell guard being obscured by the knee and the program assuming that the bell guard position continues to move backwards.
+The torsos and scoring box use almost exclusively the detections from the Yolo model and tracking boxes. The bell guards use a hierarchy of possibilities based on the confidence of various inputs.
 
 Motion Difference Tracking is used most often when the fencers are close to one another moving quickly. The quick motion is detrimental to both detection and human pose approximation. A small tracking box is used near the expected position of the bell guard. The difference between two frames is taken and sequential erosion and dilations are used to remove noise and highlight the contours of the bell guard. The most forward portion of the contour is then assumed to be the bell guard. It is done multiple times using smaller erosion values until a contour remains or the attempt fails.
 
 If the previous attempts at determining a position fail, then the expected position is used based on the two previous positions and an assumed constant speed.
+
+
 Scoring Box Lights
 
-The score box detections can be unreliable depending on the type of box, background and lighting. Ideally the score box can be detected a change in the color or HSV of the lights from a default can detected. The default is calculated during the Engarde Positioning. Since the score box detections are unreliable it is difficult to know where to analyze for the light changes. As a work around one of the settings allows for an assumed two lights on when the bell guards are within are certain distance of each other based on the total width of the frame.
-One of the planned future changes is to use an ARTag near the score box so that the tag can imply the location and size of the score box.
-
+The score box detections can be unreliable depending on the type of box, background and lighting. The Saber Box attempts to detect the scoring box lights by detecting the score box and then looking for a change in color in the upper quadrants. 
+Due to the variations in scoring machines, setups and lighting, this often fails and the Saber Box defaults to using the position of the bellguards to determine when the lights illuminate. When the bellguards are close to each other, the fencers are assumed to hit. This results in the Saber Box assuming that both fencers hit at the same time.
 
 Creating the Clip Vector and Analyzing the Position
 
