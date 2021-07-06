@@ -4,6 +4,8 @@ The Saber Box is a virtual directing aid. The program is contained within the Go
 
 The Saber Box is designed to determine the Right of Way of a saber action without blade contact. Specifically it is meant to differentiate between attack, counter-attack and preparation. These actions are the foundation of Saber, while also being some of the most subjective and difficult calls to make. The Saber Box is meant to offer a level of consistency in calling Right of Way actions and allow fencers to better plan and train with a repeatable and objective rule set.
 
+An article describing my reasoning behind the Saber Box is found at: https://medium.com/swlh/virtual-saber-aid-ece8c13b9a4d
+
 Using the Saber Box.
 
 The Saber Box can be run in one of three ways.
