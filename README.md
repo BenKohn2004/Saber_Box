@@ -10,7 +10,9 @@ The Saber Box can be run in one of three ways.
 1.	Analyzing all files in a Sync folder on your Google Drive.
 2.	Analyzing only the most recent file added to a Sync folder on your Google Drive
 3.	A specific time stamp from a Youtube Clip.
+
 To Run All the Files in the Sync Folder
+
 1.	Create a folder in the top directory of your Google Drive titled ‘Sync’
 2.	Place fencing clips in the folder to be analyzed
 a.	Clips that are 1 to 4 seconds in length starting with the engarde position work best.
@@ -19,7 +21,9 @@ a.	Clips that are 1 to 4 seconds in length starting with the engarde position wo
 5.	Runtime -> Run all
 6.	Follow the prompt in the top cell to link your Google Drive
 7.	The result can be found in the ‘Tracked Clips’ folder in the Sync directory.
+
 To Run only the Most Recent File
+
 1.	Create a folder in the top directory of your Google Drive titled ‘Sync’
 2.	Open Google Colab and find the Virtual_Saber_Box on my Github, BenKohn2004
 3.	Ensure, run_most_recent_clip == True, and the other two option are false.
